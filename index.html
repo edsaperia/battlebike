@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#07040d" />
+    <link rel="icon" href="data:," />
+    <title>Battlebike</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #07040d; overflow: hidden; }
+      body {
+        font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+        color: #cfeaff; -webkit-user-select: none; user-select: none;
+        touch-action: none; overscroll-behavior: none;
+      }
+      #game { position: fixed; inset: 0; display: block; width: 100%; height: 100%; touch-action: none; }
+      #hud { position: fixed; inset: 0; pointer-events: none; }
+      .readout {
+        position: absolute; top: 14px; letter-spacing: 0.12em; text-transform: uppercase;
+        text-shadow: 0 0 8px rgba(0, 220, 255, 0.8); font-size: 12px; line-height: 1.5;
+      }
+      .readout b { display: block; font-size: 24px; font-weight: 600; color: #fff; letter-spacing: 0.04em; }
+      #dist { left: 16px; }
+      #speed { right: 16px; text-align: right; }
+      #newbike {
+        position: absolute; left: 16px; bottom: 18px; pointer-events: auto;
+        font: inherit; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+        color: #ff9bd8; background: rgba(20, 6, 26, 0.6); border: 1px solid rgba(255, 80, 190, 0.7);
+        padding: 9px 12px; border-radius: 3px; box-shadow: 0 0 12px rgba(255, 60, 180, 0.35);
+      }
+      #newbike:active { background: rgba(255, 60, 180, 0.3); }
+      #seed { position: absolute; right: 16px; bottom: 24px; font-size: 10px; letter-spacing: 0.14em; opacity: 0.55; }
+      #banner {
+        position: absolute; left: 0; right: 0; top: 34%; text-align: center;
+        opacity: 0; transition: opacity 0.35s; padding: 0 20px;
+      }
+      #banner.show { opacity: 1; }
+      #banner h1 {
+        margin: 0; font-size: 38px; letter-spacing: 0.2em; color: #fff; font-weight: 700;
+        text-shadow: 0 0 14px #ff2a6d, 0 0 40px #ff2a6d;
+      }
+      #banner p { margin: 12px 0 0; font-size: 12px; line-height: 2; letter-spacing: 0.22em; text-transform: uppercase; text-shadow: 0 0 8px #000, 0 0 3px #000; }
+      #flash { position: absolute; inset: 0; background: #ffb060; opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+    <div id="hud">
+      <div id="flash"></div>
+      <div id="dist" class="readout">Distance<b>0 m</b></div>
+      <div id="speed" class="readout">Speed<b>0</b></div>
+      <div id="banner"><h1></h1><p></p></div>
+      <button id="newbike" type="button">New bike</button>
+      <div id="seed"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
